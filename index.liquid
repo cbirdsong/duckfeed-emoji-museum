@@ -13,7 +13,7 @@ image: /images/t2thumb.gif
 <main>
   <div class="grid">
     {%- for item in emoji %}
-      <figure class="text-center" id="{{ item.name|slugify }}" data-uploaded-by="{{ item.user_id }}" data-uploaded-date="{{ item.created | date: '%Y%m%d' }}">
+      <figure class="text-center" id="{{ item.name|slugify }}" data-sort-name="{{ item.name }}"  data-sort-author="{{ item.user_id }}" data-sort-date="{{ item.created | date: '%Y%m%d' }}">
         {% capture image_url %}/images/{{ item.file }}{% endcapture %}
         <div class="image">
           <img src="{{ image_url | url }}" />
