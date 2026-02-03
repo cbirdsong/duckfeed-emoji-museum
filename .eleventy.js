@@ -1,10 +1,11 @@
 export default async function (eleventyConfig) {
   // Passthrough
-  eleventyConfig.addPassthroughCopy({ "src/styles": "styles" });
-  eleventyConfig.addPassthroughCopy({ "src/images": "images" });
+  eleventyConfig.addPassthroughCopy("src");
+  eleventyConfig.addPassthroughCopy("images");
 
   // Watch targets
-  eleventyConfig.addWatchTarget("./src/styles/");
+  eleventyConfig.addWatchTarget("./src/css/");
+  eleventyConfig.addWatchTarget("./src/js/");
 
   var pathPrefix = "";
   if (process.env.GITHUB_REPOSITORY) {
@@ -13,7 +14,7 @@ export default async function (eleventyConfig) {
 
   return {
     dir: {
-      input: "src",
+      input: ".",
     },
     pathPrefix,
   };
