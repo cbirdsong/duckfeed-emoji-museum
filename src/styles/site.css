@@ -156,10 +156,6 @@ main header {
   padding-top: 0;
 }
 
-header {
-  text-align: var(--justify-important);
-}
-
 header button,
 header .button {
   margin-left: 0.5rem;
@@ -237,7 +233,7 @@ details summary {
   text-wrap: balance;
 }
 :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) strong {
-  font-weight: inherit;
+  font-weight: bolder;
 }
 :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6)
   + :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) {
@@ -625,17 +621,49 @@ blockquote footer {
   padding: 1.5rem 0;
 }
 
-/* Comparisons */
 
-.comparison {
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
 }
-.comparison > * {
+
+
+.text-center {
+  text-align: center;
+}
+
+figure {
+  outline: 1px dashed rgb(from currentColor r g b / 30%);
   padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
 }
-.comparison textarea {
+figcaption {
+  line-height: 1.2;
+}
+figure a {
+  text-decoration-color: transparent;
+}
+
+figure:target {
+  background-color: rgb(from var(--color-link) r g b / 5%);
+  scroll-margin: 5vh;
+}
+
+.image {
+  flex-grow: 1;
+  aspect-ratio: 1 / 1;
   width: 100%;
-  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.monospace {
+
 }
