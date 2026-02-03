@@ -180,9 +180,32 @@ nav {
   justify-content: space-between;
 }
 
+nav strong {
+  font-weight: 550;
+  text-transform: uppercase;
+  font-size: smaller;
+}
+
+nav a {
+  font-weight: 650;
+  text-decoration-thickness: 2px;
+  text-decoration-color: transparent;
+}
+
+nav a:not([aria-current="page"]):hover {
+  text-decoration-color: rgb(from var(--color-link) r g b / 75%);
+}
+
+nav a[aria-current="page"] {
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-link);
+}
+
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0 0.5rem;
 }
 
 nav ul li {
@@ -674,8 +697,6 @@ figcaption cite img {
   width: auto;
   vertical-align: text-top;
 }
-
-
 
 .image img {
   min-width: 32px;
