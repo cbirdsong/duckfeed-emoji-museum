@@ -95,7 +95,7 @@ header,
 main,
 section {
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 header {
   border-bottom: 2px solid var(--color-border);
@@ -624,8 +624,8 @@ blockquote footer {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem;
 }
 
 
