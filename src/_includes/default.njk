@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Recommended -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- Meta -->
-    <meta name="description" content="{{ metadata.description }}"/>
-    <meta name="generator" content="{{ eleventy.generator }}"/>
-
     <title>{{ title or metadata.title }}</title>
 
+    <meta name="description" content="{{ description or metadata.description }}"/>
+    <meta name="generator" content="{{ eleventy.generator }}"/>
+
+    <meta property="og:title" content="{{ title or metadata.title }}" />
+    <meta property="og:description" content="{{ description or metadata.description }}" />
+    <meta property="og:image" content="{{ image or metadata.image }}" />
+
     <link rel="stylesheet" href="{{ '/styles/site.css' | url }}"/>
+
+    <link rel="icon" href="images/rip.png" />
   </head>
 
   <body>
