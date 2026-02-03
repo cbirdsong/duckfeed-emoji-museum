@@ -643,6 +643,7 @@ figure {
 }
 figcaption {
   line-height: 1.2;
+  word-break: break-all;
 }
 figure a {
   text-decoration-color: transparent;
