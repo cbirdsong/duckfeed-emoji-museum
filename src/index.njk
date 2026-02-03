@@ -1,0 +1,36 @@
+---
+layout: default.njk
+permalink: /
+title: Duckfeed Emoji Museum
+---
+
+<main>
+  <h1>Duckfeed Emoji Museum</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Uploader</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for item in emoji %}
+        {% if not item.is_alias %}
+          <tr>
+            <td><img src="{{ item.url }}" /></td>
+            <td class="h6">
+              {%- if item.synonyms | length > 0 %}
+                {{ item.synonyms|join(", ") }}
+              {% else %}
+                {{ item.name }}
+              {% endif -%}
+            </td>
+            <td>{{ item.user_display_name }}</td>
+          </tr>
+        {% endif %}
+      {% endfor -%}
+    </tbody>
+  <table>
+</main>
