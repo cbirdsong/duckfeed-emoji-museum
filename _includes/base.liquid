@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ title }}</title>
+
+    <meta name="description" content="{{ description }}" />
+
+    <link rel="stylesheet" href="{{ '/src/css/style.css' | url }}" />
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ image | url }}" />
+
+    <link rel="icon" href="{{ '/images/rip.png' | url }}" />
+
+    <meta name="generator" content="{{ eleventy.generator }}" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Duckfeed Slack Emoji Museum</h1>
+
+      <nav>
+        <strong>Sorted by:</strong>
+        {% assign navPages = collections.all | eleventyNavigation %}
+        <ul>
+        {%- for entry in navPages %}
+          <li>
+            <a href="{{ entry.url }}" {%- if entry.url == page.url %} class="active" aria-current="page"{% endif -%}>{{ entry.title }}</a>
+          </li>
+        {%- endfor %}
+        </ul>
+
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="text-center">
+      <a
+        href="https://github.com/cbirdsong/duckfeed-emoji-museum"
+        target="_blank"
+        >View Source Code / Images</a
+      >
+    </footer>
+  </body>
+</html>

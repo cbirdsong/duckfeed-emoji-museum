@@ -1,0 +1,16 @@
+---
+layout: base.liquid
+permalink: /date/
+eleventyNavigation:
+  key: Date
+  order: 2
+title: Sorted By Date | Duckfeed Slack Emoji Museum
+description: All 1,628 of 'em, sorted by date.
+---
+
+{% assign emoji_by_date = emoji | sort: "created" %}
+<div class="grid">
+  {%- for item in emoji_by_date %}
+    {% include 'card' %}
+  {% endfor -%}
+</div>

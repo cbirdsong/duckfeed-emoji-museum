@@ -1,50 +1,16 @@
 ---
-layout: default.liquid
+layout: base.liquid
 permalink: /
+eleventyNavigation:
+  key: Name
+  order: 1
 title: Duckfeed Slack Emoji Museum
 description: All 1,628 of 'em.
-image: /images/t2thumb.gif
 ---
 
-<header class="text-center">
-  <h1>Duckfeed Slack Emoji Museum</h1>
-</header>
 
-<main>
-  <div class="grid">
-    {%- for item in emoji %}
-      {% assign item_id = item.name|slugify|strip %}
-      {% assign item_id_size = item_id|size %}
-      {% if item_id_size == 0 %}
-        {% assign item_id = item.name %}
-      {% endif %}
-      <figure class="text-center" id="{{ item_id }}" data-sort-name="{{ item.name }}"  data-sort-author="{{ item.user_id }}" data-sort-date="{{ item.created | date: '%Y%m%d' }}">
-        {% capture image_url %}/images/{{ item.file }}{% endcapture %}
-        <div class="image">
-          <img src="{{ image_url | url }}" />
-        </div>
-        <figcaption>
-          <p class="h5">
-            <a href="#{{ item_id }}">
-              <strong>{{ item.name }}</strong>
-            </a>
-          </p>
-          <cite>
-            <span>
-              uploaded by<br>
-              <strong>
-                <img src="https://ca.slack-edge.com/{{ item.team_id }}-{{ item.user_id }}-{{ item.avatar_hash }}-24" srcset="https://ca.slack-edge.com/{{ item.team_id }}-{{ item.user_id }}-{{ item.avatar_hash }}-48 2x" aria-hidden="true" alt="" width="24" onerror="this.style.display='none'">
-                {{ item.user_display_name }}
-              </strong>
-            </span>
-            <time datetime="{{ item.created | date: '%F' }}">{{ item.created | date: '%B %e, %Y' }}</time>
-          </cite>
-        </figcaption>
-      </figure>
-    {% endfor -%}
-  </div>
-</main>
-
-<footer class="text-center">
-  <a href="https://github.com/cbirdsong/duckfeed-emoji-museum" target="_blank">View Source Code / Images</a>
-</footer>
+<div class="grid">
+  {%- for item in emoji %}
+    {% include 'card' %}
+  {% endfor -%}
+</div>

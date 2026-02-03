@@ -1,0 +1,30 @@
+{% assign item_id = item.name|slugify|strip %}
+{% assign item_id_size = item_id|size %}
+{% if item_id_size == 0 %}
+  {% assign item_id = item.name %}
+{% endif %}
+
+{% capture image_url %}/images/{{ item.file }}{% endcapture %}
+
+<figure class="text-center" id="{{ item_id }}" data-sort-name="{{ item.name }}"  data-sort-author="{{ item.user_id }}" data-sort-date="{{ item.created | date: '%Y%m%d' }}">
+  <div class="image">
+    <img src="{{ image_url | url }}" />
+  </div>
+  <figcaption>
+    <p class="h5">
+      <a href="#{{ item_id }}">
+        <strong>{{ item.name }}</strong>
+      </a>
+    </p>
+    <cite>
+      <span>
+        uploaded by<br>
+        <strong>
+          <img src="https://ca.slack-edge.com/{{ item.team_id }}-{{ item.user_id }}-{{ item.avatar_hash }}-24" srcset="https://ca.slack-edge.com/{{ item.team_id }}-{{ item.user_id }}-{{ item.avatar_hash }}-48 2x" aria-hidden="true" alt="" width="24" onerror="this.style.display='none'">
+          {{ item.user_display_name }}
+        </strong>
+      </span>
+      <time datetime="{{ item.created | date: '%F' }}">{{ item.created | date: '%B %e, %Y' }}</time>
+    </cite>
+  </figcaption>
+</figure>
