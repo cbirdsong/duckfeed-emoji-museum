@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "run-p start:*",
-    "start:eleventy": "eleventy --serve",
-    "build": "run-s clean build:eleventy",
-    "build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
-    "clean": "rimraf _site"
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/duckfeed-emoji-museum/"
   },
   "license": "ISC",
   "author": "",
