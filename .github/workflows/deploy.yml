@@ -1,33 +1,16 @@
-name: 11ty build and deploy
-on:
-  push:
-    branches:
-      - 'main'
+name: Eleventy Build
+on: [push]
 
 jobs:
-
   build_deploy:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
-
     steps:
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run eleventy build
-        uses: maschmann/eleventy-build-action@main
+      - uses: actions/checkout@master
+      - name: Build
+        uses: cjerrington/actions-eleventy@master
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          node_version: 23  # default
-          output: './_site' # default
-          quiet: true       # default false
-
-      - name: Copy files to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_NAME }}
-          username: ${{ secrets.SERVER_DEPLOY_USER }}
-          key: ${{ secrets.SERVER_DEPLOY_KEY }}
-          rm: true
-          source: "_site/"
-          target: ${{ vars.DEPLOYMENT_TARGET }}
+          publish_dir: _site
+          publish_branch: gh-pages
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
