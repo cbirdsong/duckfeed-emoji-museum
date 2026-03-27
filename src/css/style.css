@@ -432,8 +432,46 @@ figure img {
   max-width: 100%;
 }
 
-figure figcaption {
+figure {
+  outline: 1px dashed rgb(from currentColor r g b / 30%);
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+figure:target {
+  outline-color: rgb(from var(--color-link) r g b / 95%);
+  outline-width: 2px;
+  scroll-margin: 5vh;
+}
+
+figcaption {
+  line-height: 1.2;
+
   opacity: 0.85;
+}
+
+figcaption a {
+  text-decoration-color: transparent;
+  /* word-break: break-all; */
+  overflow-wrap: anywhere;
+}
+figcaption cite {
+  font-size: smaller;
+  display: flex;
+  flex-flow: column;
+  gap: 0.25em;
+
+  text-wrap: balance;
+}
+figcaption cite strong {
+  font-weight: 600;
+}
+figcaption cite img {
+  height: 1.125em;
+  width: auto;
+  vertical-align: text-top;
 }
 
 /* Forms */
@@ -646,56 +684,17 @@ blockquote footer {
   padding: 1.5rem 0;
 }
 
+/* Grid layout */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
-
-.text-center {
-  text-align: center;
-}
-
-figure {
-  outline: 1px dashed rgb(from currentColor r g b / 30%);
-  padding: 1rem;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-}
-figure:target {
-  outline-color: rgb(from var(--color-link) r g b / 95%);
-  outline-width: 2px;
-  scroll-margin: 5vh;
-}
-
-figcaption {
-  line-height: 1.2;
-
-  opacity: 0.85;
-}
-
-figcaption a {
-  text-decoration-color: transparent;
-  /* word-break: break-all; */
-  overflow-wrap: anywhere;
-}
-figcaption cite {
-  font-size: smaller;
-  display: flex;
-  flex-flow: column;
-  gap: 0.25em;
-
-  text-wrap: balance;
-}
-figcaption cite strong {
-  font-weight: 600;
-}
-figcaption cite img {
-  height: 1.125em;
-  width: auto;
-  vertical-align: text-top;
+@media (min-width: 500px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
 }
 
 .image img {
@@ -712,4 +711,10 @@ figcaption cite img {
     align-items: center;
     justify-content: center;
   }
+}
+
+/* Utilities */
+
+.text-center {
+  text-align: center;
 }
